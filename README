@@ -1,0 +1,29 @@
+/************************************************************
+* README
+* Tyler Hoang
+************************************************************/
+
+Files Submitted:
+List.c - provided
+List.h - provided
+Digraph.c - Contains the code for the functions and descriptions in Digraph.h
+Digraph.h - Header file for the Digraph ADT
+DigraphProperties.c - Used for analyzing a Digraph from an input file
+Makefile
+README
+
+Additional Notes: The DigraphObj struct has a pretty extensive list of fields:
+numVertices - keeps track of the number of vertices in the Digraph
+numEdges - keeps track of the number of edges in the Digraph
+numSCCs - keeps track of the number of SCCs in the Digraph
+adjLists - an array of Lists that is used to keep track of each vertex's neighbors
+markers - an int array that is used to mark the vertices
+times - an int array that is used to keep track of the starting time of each vertex
+finishTimes - an int array that is used to keep track of the finishing time of each vertex
+largestFinishTime - keeps track of the largest finish time and will allow the program to know which vertex to start DFS from after the reversal of the edges
+lowestFinishTime - keeps track of the lowest finish time
+SCCVertices - keeps track of the number of vertices in a certain SCC
+currentSCCList - used as the current List of vertices in a certain SCC
+SCCLists - an array of Lists that keeps track of all the SCCS in the Digraph and their respective vertices
+
+- The algorithm that was used to find the SCC properties is the algorithm that was described in class and described in CLRS. DFS is performed on all the vertices to find each vertex's start and finish time. All the edges in the graph are then reversed, then DFS is performed starting at the vertex with the largest finish time.
