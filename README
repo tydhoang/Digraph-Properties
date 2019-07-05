@@ -3,16 +3,105 @@
 * Tyler Hoang
 ************************************************************/
 
-Files Submitted:
-List.c - provided
-List.h - provided
+Required Files:
+List.c - Contains the code for the functions and descriptions in List.h
+List.h - Header file for the List ADT
 Digraph.c - Contains the code for the functions and descriptions in Digraph.h
 Digraph.h - Header file for the Digraph ADT
 DigraphProperties.c - Used for analyzing a Digraph from an input file
 Makefile
 README
 
-Additional Notes: The DigraphObj struct has a pretty extensive list of fields:
+*************************************************************
+Usage: %s <input file> <output file>
+*************************************************************
+
+Overview:
+The first line of the input file describes the digraph, and the other lines describe operations to be performed on the digraph. No line is more than 1000 characters long, and it is an assumption that all lines end with \n (newline). Most of these operations simply print values returned by functions implemented in the Digraph ADT. 
+The first line starts with an integer that is called numVertices that specifies the number of vertices in the digraph. The rest of that line gives pair of distinct numbers in the range 1 to numVertices, separated by a space. These numbers are the vertices for an edge. There is a comma between numVertices and the first edge, and a comma between edges. We’ll also put a space after each comma for readability. All edges are directed.
+
+Sample Input:
+4, 1 3, 2 4, 3 4, 4 3, 3 2
+
+Note that the same digraph could be represented by each of the following input lines:
+4, 3 2, 4 3, 1 3, 3 4, 2 4
+4, 3 2, 4 3, 1 3, 3 4, 2 4, 1 3
+even though the edge (1, 3) appears in the last digraph twice.
+
+However, the following digraph is different:
+4, 3 2, 4 3, 1 3, 3 4, 2 4, 3 1
+because edges {1, 3} and {3, 1} are different edges.
+
+The rest of the lines in the input file correspond to digraph operations on operands. Each line begins with a keyword, which is followed by the operands. If an input line does not follow one of the specified formats, the output on the second line is ERROR, and processing of the input file should continue. For example, it’s an error if the operation isn’t one of the legal operations (capitalization matters), or if the operation has the wrong number of operands, or if an operand that’s supposed to be a vertex isn’t a number between 1 and numVertices.
+
+Sample Input:
+4, 1 3, 2 4, 3 4, 4 3, 3 2
+PrintDigraph
+GetSize
+GetCountSCC
+GetNumSCCVertices
+GetNumSCCVertices 4
+GetOutDegree 4
+GetOutDegree 5
+InSameSCC 2 4
+DeleteEdge 2 4
+InSameSCC 2 4
+GetCountSCC
+AddEdge 2 1
+GetCountSCC
+InSameSCC 2
+
+Sample Output:
+PrintDigraph
+4, 1 3, 2 4, 3 2, 3 4, 4 3
+GetSize
+5
+GetCountSCC
+2
+GetNumSCCVertices
+ERROR
+GetNumSCCVertices 4
+3
+GetOutDegree 4
+1
+GetOutDegree 5
+ERROR
+InSameSCC 2 4
+YES
+DeleteEdge 2 4
+0
+InSameSCC 2 4
+NO
+GetCountSCC
+3
+AddEdge 2 1
+0
+GetCountSCC
+1
+InSameSCC 2
+ERROR
+
+Key Operations and Their Respective Specifications:
+- GetOutDegree takes a vertex u as operand. It returns the number of vertices that are outgoing
+neighbors of u in the current digraph. The out degree of a vertex u is the number of vertices v such
+that (u, v) is an edge in the digraph.
+- AddEdge takes two vertices u and v as operands. It adds the edge (u, v) to the current digraph. If that
+edge didn’t exist in the current digraph, it returns 0. If that edge already existed in the current digraph,
+it returns 1, since no action was taken. (This is not treated as an error.)
+- DeleteEdge takes two vertices u and v as operands. It deletes the edge (u, v) from the current digraph.
+If that edge already existed in the current digraph, it returns 0. If that edge didn’t exist in the current
+digraph, it returns 1, since no action was taken. (This is not treated as an error.)
+- GetCountSCC takes no operands. It outputs the number of Strongly Connected Components in the
+current digraph.
+- GetNumSCCVertices take a vertex u as operand. It outputs the number of vertices (including u) that
+are in the same Strongly Connected Component as u.
+- InSameSCC takes two vertices u and v as operands. It outputs YES if u and v are in the same
+Strongly Connected Component of the current digraph, and NO if u and v are not in the same Strongly
+Connected Component of the current digraph. A vertex is always in the same Strongly Connected
+Components as itself.
+
+Digraphs:
+The DigraphObj struct has an extensive list of fields:
 numVertices - keeps track of the number of vertices in the Digraph
 numEdges - keeps track of the number of edges in the Digraph
 numSCCs - keeps track of the number of SCCs in the Digraph
@@ -26,4 +115,4 @@ SCCVertices - keeps track of the number of vertices in a certain SCC
 currentSCCList - used as the current List of vertices in a certain SCC
 SCCLists - an array of Lists that keeps track of all the SCCS in the Digraph and their respective vertices
 
-- The algorithm that was used to find the SCC properties is the algorithm that was described in class and described in CLRS. DFS is performed on all the vertices to find each vertex's start and finish time. All the edges in the graph are then reversed, then DFS is performed starting at the vertex with the largest finish time.
+The algorithm that was used to find the SCC properties is the algorithm that was described in CLRS. DFS is performed on all the vertices to find each vertex's start and finish time. All the edges in the graph are then reversed, then DFS is performed starting at the vertex with the largest finish time.

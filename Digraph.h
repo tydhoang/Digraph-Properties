@@ -1,3 +1,7 @@
+/************************************************************
+ * Digraph.h
+ * Tyler Hoang
+ ************************************************************/
 #ifndef _INTEGER_DIGRAPH_H_INCLUDE_
 #define _INTEGER_DIGRAPH_H_INCLUDE_
 

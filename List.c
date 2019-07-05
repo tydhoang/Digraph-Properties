@@ -1,9 +1,7 @@
-/*
- * Author: Abhishek Alfred Singh
- * Email: abasingh@ucsc.edu
- * CMPS 101 - Doubly linked list implementation
- */
-
+/************************************************************
+ * List.c
+ * Tyler Hoang
+ ************************************************************/
 #include <stdlib.h>
 #include "List.h"
 

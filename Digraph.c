@@ -1,8 +1,6 @@
 /************************************************************
  * Digraph.c
  * Tyler Hoang
- * tydhoang
- * PA4
  * Contains the code for the functions and descriptions in Digraph.h
  ************************************************************/
 #include "Digraph.h"

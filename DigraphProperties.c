@@ -1,8 +1,6 @@
 /************************************************************
  * DigraphProperties.c
  * Tyler Hoang
- * tydhoang
- * PA4
  * Reads each line of an input file, creating a Digraph from the first line, then prints
  * properties of the Digraph based on the next input lines
  ************************************************************/

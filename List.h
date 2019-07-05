@@ -1,5 +1,9 @@
-#ifndef LIST_H_CMPS101
-#define LIST_H_CMPS101
+/************************************************************
+ * List.h
+ * Tyler Hoang
+ ************************************************************/
+#ifndef LIST_H
+#define LIST_H
 
 #include <stdio.h>
 

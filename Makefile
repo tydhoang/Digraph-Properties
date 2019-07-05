@@ -1,8 +1,6 @@
 #------------------------------------------------------------------------------
 # Makefile
 # Tyler Hoang
-# tydhoang
-# PA4
 # Makefile with macros for DigraphProperties.c that includes target check in order to
 # check for memory leaks
 #------------------------------------------------------------------------------
